@@ -15,27 +15,34 @@ int main() {
     for (int i = 0; i < 7; i++) {
         printf("Set %d: ", i + 1);
 
-        int length = 0;
+        int length=0;
         while (sets[i][length] != 0) {
             length++;
         }
 
-        int idx = 0;
-        int isPalindrome = 1;
+        
+        for (int j = 0; j < length; j++) {
+            printf("%d ", sets[i][j]);
+        }
 
-        while (idx < length) {
-            printf("%d ", sets[i][idx]);
+        
+        int left = 0;
+        int right = length - 1;
+        int isPalindrome = 1; 
 
-            if (sets[i][idx] != sets[i][length - 1 - idx]) {
+        while (left < right) {
+            if (sets[i][left] != sets[i][right]) {
                 isPalindrome = 0; 
+                break;            
             }
-            idx++;
+            left++; 
+            right--; 
         }
 
         if (isPalindrome) {
-            printf("-> Palindrome\n");
+            printf("--> Palindrome\n");
         } else {
-            printf("-> Not Palindrome\n");
+            printf("--> Not Palindrome\n");
         }
     }
 
